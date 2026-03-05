@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Our Cards</title>
+</head>
+<body>
+<center>
+    <h2>Our Greeting Cards</h2>
+
+    <h3>Birthday Card</h3>
+    <img src="birthday.jpg" alt="Birthday Card" width="200"><br>
+    <p>Price: ₹49</p>
+
+    <h3>Wedding Card</h3>
+    <img src="wedding.jpg" alt="Wedding Card" width="200"><br>
+    <p>Price: ₹99</p>
+
+    <h3>Festival Card</h3>
+    <img src="festival.jpg" alt="Festival Card" width="200"><br>
+    <p>Price: ₹59</p>
+
+    <!-- Order Button -->
+    <button id="orderBtn">Order Your Card Now</button>
+
+    <!-- Order Form (hidden initially) -->
+    <div id="orderForm" style="display:none; margin-top:10px;">
+        <h3>Order Form</h3>
+        <input type="text" id="name" placeholder="Your Name"><br><br>
+        <input type="email" id="email" placeholder="Your Email"><br><br>
+        <textarea id="message" rows="4" placeholder="Your Message"></textarea><br><br>
+        <button id="submitBtn">Submit Order</button>
+    </div>
+
+    <script>
+        // Show form on button click
+        document.getElementById('orderBtn').addEventListener('click', function(){
+            document.getElementById('orderForm').style.display = 'block';
+        });
+
+        // Submit order
+        document.getElementById('submitBtn').addEventListener('click', function(){
+            var name = document.getElementById('name').value;
+            var email = document.getElementById('email').value;
+            var message = document.getElementById('message').value;
+
+            if(name === "" || email === "" || message === ""){
+                alert("Please fill all fields!");
+            } else {
+                alert("Thank you " + name + "! Your order has been submitted.");
+                // Clear form
+                document.getElementById('name').value = "";
+                document.getElementById('email').value = "";
+                document.getElementById('message').value = "";
+                document.getElementById('orderForm').style.display = 'none';
+            }
+        });
+    </script><br><br><br>
+<a href="feedback.html">feedback.html</a>
+
+
+</center>
+</body>
+</html>

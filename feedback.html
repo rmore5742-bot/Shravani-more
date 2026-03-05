@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Feedback Form</title>
+</head>
+<body>
+<center>
+
+    <h2>Feedback Form</h2>
+    <p>Please share your feedback:</p>
+
+    <!-- Name and Email -->
+    <input type="text" id="fName" placeholder="Your Name"><br><br>
+    <input type="email" id="fEmail" placeholder="Your Email"><br><br>
+
+    <!-- Website Rating -->
+    <label>How is our website?</label><br>
+    <input type="radio" name="websiteRating" value="Excellent"> Excellent<br>
+    <input type="radio" name="websiteRating" value="Good"> Good<br>
+    <input type="radio" name="websiteRating" value="Average"> Average<br>
+    <input type="radio" name="websiteRating" value="Bad"> Bad<br><br>
+
+    <!-- Power of Website -->
+    <label>Power of Website:</label><br>
+    <input type="text" id="fPower" placeholder="Your thoughts"><br><br>
+
+    <!-- Additional Comments -->
+    <label>Additional Comments:</label><br>
+    <textarea id="fMessage" rows="4" placeholder="Your comments"></textarea><br><br>
+
+    <button id="submitFeedbackBtn">Submit Feedback</button>
+
+    <script>
+        document.getElementById('submitFeedbackBtn').addEventListener('click', function(){
+            var name = document.getElementById('fName').value;
+            var email = document.getElementById('fEmail').value;
+            var power = document.getElementById('fPower').value;
+            var message = document.getElementById('fMessage').value;
+
+            // Get selected radio button
+            var ratings = document.getElementsByName('websiteRating');
+            var ratingValue = "";
+            for(var i=0;i<ratings.length;i++){
+                if(ratings[i].checked){
+                    ratingValue = ratings[i].value;
+                }
+            }
+
+            if(name === "" || email === "" || ratingValue === ""){
+                alert("Please fill Name, Email, and select website rating!");
+            } else {
+                alert(
+                    "Thank you " + name + "!\n" +
+                    "Email: " + email + "\n" +
+                    "Website Rating: " + ratingValue + "\n" +
+                    "Power of Website: " + power + "\n" +
+                    "Comments: " + message + "\n" +
+                    "Your feedback has been submitted."
+                );
+
+                // Clear form
+                document.getElementById('fName').value = "";
+                document.getElementById('fEmail').value = "";
+                document.getElementById('fPower').value = "";
+                document.getElementById('fMessage').value = "";
+                for(var i=0;i<ratings.length;i++){ ratings[i].checked=false; }
+            }
+        });
+    </script><br><br>
+<a href="index.html">index.html</a>
+</center>
+</body>
+</html>
